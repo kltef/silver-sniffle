@@ -27,16 +27,13 @@ class AutoFitTextureView @JvmOverloads constructor(
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         val width = MeasureSpec.getSize(widthMeasureSpec)
-        val height = MeasureSpec.getSize(heightMeasureSpec)
-        if (ratioWidth == 0 || ratioHeight == 0) {
-            setMeasuredDimension(width, height)
+        if (ratioWidth == 0 || ratioHeight == 0 || width == 0) {
+            setMeasuredDimension(width, MeasureSpec.getSize(heightMeasureSpec))
             return
         }
-        // Fit the largest aspect-correct rectangle inside the given bounds.
-        if (width < height * ratioWidth / ratioHeight) {
-            setMeasuredDimension(width, width * ratioHeight / ratioWidth)
-        } else {
-            setMeasuredDimension(height * ratioWidth / ratioHeight, height)
-        }
+        // Drive the height from the (known) width and the preview aspect ratio. We deliberately
+        // ignore the height spec: when this view is laid out with wrap_content height, the parent
+        // measures it with an unspecified/zero height spec, which would otherwise collapse the tile.
+        setMeasuredDimension(width, width * ratioHeight / ratioWidth)
     }
 }
