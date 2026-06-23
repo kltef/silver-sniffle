@@ -1,0 +1,14 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- A 2x2 grid of camera lenses, centered in the adaptive safe zone. -->
+    <group android:translateX="30" android:translateY="30">
+        <path android:fillColor="#FFFFFF" android:pathData="M6,6 m-6,0 a6,6 0 1,0 12,0 a6,6 0 1,0 -12,0" />
+        <path android:fillColor="#FFFFFF" android:pathData="M42,6 m-6,0 a6,6 0 1,0 12,0 a6,6 0 1,0 -12,0" />
+        <path android:fillColor="#FFFFFF" android:pathData="M6,42 m-6,0 a6,6 0 1,0 12,0 a6,6 0 1,0 -12,0" />
+        <path android:fillColor="#FFFFFF" android:pathData="M42,42 m-6,0 a6,6 0 1,0 12,0 a6,6 0 1,0 -12,0" />
+    </group>
+</vector>

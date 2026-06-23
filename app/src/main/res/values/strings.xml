@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MultiCam Grid</string>
+
+    <string name="badge_concurrent">concurrent‑ok</string>
+    <string name="retry">Retry</string>
+    <string name="opening">Opening…</string>
+    <string name="idle">Waiting…</string>
+
+    <string name="permission_denied">Camera permission denied</string>
+
+    <string name="banner_title">Found %1$d camera(s) on this device</string>
+    <string name="banner_streaming">Streaming now: %1$d / %2$d</string>
+    <string name="banner_concurrent">Officially concurrent: %1$s</string>
+
+    <string name="concurrent_none">none reported by hardware</string>
+    <string name="concurrent_needs_android_11">needs Android 11+ to query</string>
+</resources>
