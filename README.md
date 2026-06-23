@@ -11,14 +11,15 @@ many of your cameras (e.g. 3 rear + 1 front) the hardware can actually drive con
   (ultrawide / wide / tele), focal length, and 35mm-equivalent.
 - A top banner reports the total cameras found and which **combinations the hardware
   officially supports running concurrently** (`CameraManager.getConcurrentCameraIds()`,
-  Android 11+), plus a live "Streaming X / N" counter.
-- Attempts to open **all** cameras simultaneously (opens are staggered slightly). Any camera
-  the hardware refuses shows a clear reason ("Device's concurrent camera limit reached",
-  "Camera busy", etc.) with a **Retry** button — freeing one camera may let another open.
+  Android 11+).
+- **Cycle capture:** because most phones can't open more than ~2 cameras at once (limited
+  image signal processors), the app cycles through every camera — opening one at a time,
+  showing it live for ~2.5s with a **● LIVE** badge, then advancing to the next and looping.
+  This way you get to verify that *all* of your cameras work.
+- **Tap any tile to pin it** (pause cycling on that camera); tap again to resume.
 
-> **Reality check:** Most phones cannot stream every camera at the same time (limited image
-> signal processors). This app is designed to reveal and explain that limit, not promise that
-> all four will run together.
+> **Reality check:** Opening all cameras as independent devices simultaneously isn't possible
+> on most hardware. Cycling shows each one in turn so you can confirm they all function.
 
 ## Get the APK (no computer needed)
 

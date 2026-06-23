@@ -12,6 +12,11 @@
     <string name="banner_streaming">Streaming now: %1$d / %2$d</string>
     <string name="banner_concurrent">Officially concurrent: %1$s</string>
 
+    <string name="cycle_now_showing">Cycling · now showing Cam %1$s (%2$d/%3$d) · tap a tile to pin</string>
+    <string name="cycle_pinned">Pinned Cam %1$s · tap it again to resume cycling</string>
+    <string name="chip_live">● LIVE</string>
+    <string name="chip_pinned">📌 PINNED</string>
+
     <string name="concurrent_none">none reported by hardware</string>
     <string name="concurrent_needs_android_11">needs Android 11+ to query</string>
 </resources>

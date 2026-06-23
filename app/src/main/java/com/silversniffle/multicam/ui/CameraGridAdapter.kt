@@ -16,6 +16,7 @@ import com.silversniffle.multicam.databinding.ItemCameraTileBinding
  */
 class CameraGridAdapter(
     private val tiles: List<Tile>,
+    private val onTileClick: (Tile) -> Unit,
     private val onRetry: (Tile) -> Unit,
 ) : RecyclerView.Adapter<CameraGridAdapter.TileViewHolder>() {
 
@@ -24,6 +25,8 @@ class CameraGridAdapter(
         val info: CameraInfo,
         var state: CameraTileState,
         val controller: CameraController,
+        /** True when the user has pinned this tile (cycling paused on it). */
+        var pinned: Boolean = false,
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TileViewHolder {
@@ -50,7 +53,28 @@ class CameraGridAdapter(
             binding.badge.visibility =
                 if (tile.info.concurrentSupported) View.VISIBLE else View.GONE
             renderState(tile)
+            renderChip(tile)
             binding.retryButton.setOnClickListener { onRetry(tile) }
+            binding.root.setOnClickListener { onTileClick(tile) }
+        }
+
+        private fun renderChip(tile: Tile) {
+            val ctx = binding.root.context
+            when {
+                tile.pinned -> {
+                    binding.statusChip.visibility = View.VISIBLE
+                    binding.statusChip.text =
+                        ctx.getString(com.silversniffle.multicam.R.string.chip_pinned)
+                    binding.statusChip.setBackgroundColor(0xCCB26A00.toInt())
+                }
+                tile.state is CameraTileState.Streaming -> {
+                    binding.statusChip.visibility = View.VISIBLE
+                    binding.statusChip.text =
+                        ctx.getString(com.silversniffle.multicam.R.string.chip_live)
+                    binding.statusChip.setBackgroundColor(0xCC2E7D32.toInt())
+                }
+                else -> binding.statusChip.visibility = View.GONE
+            }
         }
 
         private fun renderState(tile: Tile) {
